@@ -3445,6 +3445,7 @@ static rt_err_t _rt_mq_send_wait(rt_mq_t mq,
                                         mq->parent.parent.flag, suspend_flag);
         if (ret != RT_EOK)
         {
+            thread->error = ret;
             rt_spin_unlock_irqrestore(&(mq->spinlock), level);
             return ret;
         }
